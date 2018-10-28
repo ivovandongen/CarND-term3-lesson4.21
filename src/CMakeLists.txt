@@ -1,17 +1,15 @@
-# Submodules
-git_include(Eigen)
 
 add_library(core STATIC
-    ${CMAKE_SOURCE_DIR}/src/core.hpp
-    ${CMAKE_SOURCE_DIR}/src/core.cpp
+    ${CMAKE_SOURCE_DIR}/src/cost.h
+    ${CMAKE_SOURCE_DIR}/src/cost.cpp
+    ${CMAKE_SOURCE_DIR}/src/road.h
+    ${CMAKE_SOURCE_DIR}/src/road.cpp
+    ${CMAKE_SOURCE_DIR}/src/vehicle.h
+    ${CMAKE_SOURCE_DIR}/src/vehicle.cpp
     )
 
 target_include_directories(core
     PUBLIC ${CMAKE_SOURCE_DIR}/src
-    )
-
-target_link_libraries(core PUBLIC
-    Eigen
     )
 
 if (DO_CLANG_TIDY)
