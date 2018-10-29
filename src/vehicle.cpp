@@ -50,9 +50,19 @@ vector<Vehicle> Vehicle::choose_next_state(map<int, vector<Vehicle>> predictions
     */
 
     //TODO: Your solution here.
+    std::vector<std::string> possible_successor_states = successor_states();
 
-    //TODO: Change return value here:
-    return generate_trajectory("KL", predictions);
+    std::map<float, std::vector<Vehicle>> costs;
+    for (auto &possible_state : possible_successor_states) {
+        std::vector<Vehicle> trajectories = generate_trajectory(possible_state, predictions);
+
+        if (!trajectories.empty()) {
+            float cost = calculate_cost(*this, predictions, trajectories);
+            costs[cost] = std::move(trajectories);
+        }
+    }
+
+    return costs.begin()->second;
 }
 
 vector<string> Vehicle::successor_states() {

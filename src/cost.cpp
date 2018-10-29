@@ -7,8 +7,8 @@
 
 
 //TODO: change weights for cost functions.
-const float REACH_GOAL = 0;
-const float EFFICIENCY = 0;
+const float REACH_GOAL = 1;
+const float EFFICIENCY = 0.1;
 
 /*
 Here we have provided two possible suggestions for cost functions, but feel free to use your own!
